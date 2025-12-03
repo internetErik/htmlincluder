@@ -1,6 +1,6 @@
 /**
  * Configuration file loader for HTML Includer
- * 
+ *
  * Loads and validates configuration from various file formats
  */
 
@@ -32,7 +32,7 @@ const defaultConfig = {
 
 /**
  * Load configuration from a file
- * 
+ *
  * @param {string} configPath - Path to configuration file
  * @returns {Promise<Object>} Merged configuration object
  */
@@ -93,7 +93,7 @@ function mergeConfig(defaults, user) {
 /**
  * Find configuration file in current directory
  * Searches for common configuration file names
- * 
+ *
  * @param {string} startDir - Directory to start search from
  * @returns {Promise<string|null>} Path to configuration file or null
  */
@@ -121,7 +121,7 @@ export async function findConfig(startDir = process.cwd()) {
 
 /**
  * Validate configuration object
- * 
+ *
  * @param {Object} config - Configuration to validate
  * @throws {Error} If configuration is invalid
  */
@@ -149,7 +149,7 @@ export function validateConfig(config) {
 
 /**
  * Create a default configuration file
- * 
+ *
  * @param {string} outputPath - Path where to create the config file
  * @param {string} format - 'json' or 'js'
  */
@@ -161,7 +161,7 @@ export async function createDefaultConfig(outputPath, format = 'js') {
   } else {
     content = `/**
  * HTML Includer Configuration
- * 
+ *
  * This file configures how HTML files are processed.
  * See: https://github.com/internetErik/gulp-htmlincluder
  */
@@ -169,29 +169,29 @@ export async function createDefaultConfig(outputPath, format = 'js') {
 export default {
   // Source directory containing HTML files
   srcDir: './src',
-  
+
   // Destination directory for processed files
   destDir: './dist',
-  
+
   // Processing options
   options: {
     // JSON data to inject into templates
     jsonInput: {},
-    
+
     // Custom insert pattern (default: 'insert')
     // Set to 'include virtual' for SSI compatibility
     insertPattern: null,
-    
+
     // Attribute name for file paths (default: 'path')
     filePathAttribute: 'path',
-    
+
     // Attribute name for JSON paths (default: 'jsonPath')
     jsonPathAttribute: 'jsonPath',
-    
+
     // Functions available in rawJson attributes
     // Example: { fetch: fetch, myHelper: () => {} }
     rawJsonPlugins: {},
-    
+
     // Development options
     dev: {
       limitIterations: null,
@@ -200,10 +200,10 @@ export default {
       printPaths: false,
     },
   },
-  
+
   // Specific files to process (null = all files)
   files: null,
-  
+
   // Watch mode (for CLI)
   watch: false,
 };

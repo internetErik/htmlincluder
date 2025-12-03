@@ -1,6 +1,6 @@
 /**
  * HTML Includer - Main Entry Point
- * 
+ *
  * This module exports both:
  * 1. The Gulp plugin (default export) - for backward compatibility
  * 2. The standalone core API - for use without Gulp

@@ -1,6 +1,6 @@
 /**
  * Core HTML Includer API
- * 
+ *
  * This module provides the core functionality for processing HTML files
  * with include directives. It's decoupled from any specific build tool
  * (like Gulp) and can be used standalone or with any build system.
@@ -13,7 +13,7 @@ import { configureFiles, setOptions, pageFiles, insertFiles, wrapFiles } from '.
 
 /**
  * Process HTML files with include directives
- * 
+ *
  * @param {Object} config - Configuration object
  * @param {string} config.srcDir - Source directory containing HTML files
  * @param {string} config.destDir - Destination directory for processed files
@@ -34,7 +34,7 @@ export async function processDirectory(config) {
 
   // Load all files from the source directory
   const allFiles = files || await discoverFiles(srcDir);
-  
+
   // Hash all files (categorize them as page, insert, or wrap files)
   for (const filePath of allFiles) {
     const content = await fs.readFile(filePath, 'utf8');
@@ -66,19 +66,19 @@ export async function processDirectory(config) {
 
 /**
  * Process a single HTML file
- * 
+ *
  * @param {string} filePath - Path to the file to process
  * @param {Object} options - Processing options
  * @returns {Promise<Object>} Processed file result
  */
 export async function processSingleFile(filePath, options = {}) {
   setOptions(options);
-  
+
   const content = await fs.readFile(filePath, 'utf8');
   const file = createFileObject(filePath, content);
-  
+
   const processed = await processFile(file, options.jsonInput || {});
-  
+
   return {
     path: file.path,
     name: file.name,
@@ -88,7 +88,7 @@ export async function processSingleFile(filePath, options = {}) {
 
 /**
  * Process HTML content string directly
- * 
+ *
  * @param {string} content - HTML content to process
  * @param {Object} context - Processing context
  * @param {string} context.basePath - Base path for resolving relative includes
@@ -110,21 +110,21 @@ export async function processContent(content, context = {}) {
   );
 
   const processed = await processFile(file, options.jsonInput || {});
-  
+
   return processed.content;
 }
 
 /**
  * Load and process files needed for includes/wraps
- * 
+ *
  * @param {string} baseDir - Base directory to search for include/wrap files
  * @param {Object} options - Processing options
  */
 export async function loadDependencies(baseDir, options = {}) {
   setOptions(options);
-  
+
   const allFiles = await discoverFiles(baseDir);
-  
+
   for (const filePath of allFiles) {
     const fileName = path.basename(filePath);
     // Only load insert (-) and wrap (_) files
@@ -144,7 +144,7 @@ export async function loadDependencies(baseDir, options = {}) {
 function createFileObject(filePath, content) {
   const isWin = /^win/.test(process.platform);
   const fileName = path.basename(filePath);
-  
+
   return {
     path: filePath,
     name: fileName,
@@ -191,17 +191,17 @@ function processClip(file) {
  */
 async function discoverFiles(dir, fileList = []) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
-  
+
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
-    
+
     if (entry.isDirectory()) {
       await discoverFiles(fullPath, fileList);
     } else if (entry.isFile() && fullPath.endsWith('.html')) {
       fileList.push(fullPath);
     }
   }
-  
+
   return fileList;
 }
 
