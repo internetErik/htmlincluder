@@ -1,5 +1,5 @@
 {
-  "name": "htmlincluder",
+	"name": "htmlincluder",
   "version": "0.1.0",
   "description": "A utility for building files into each other.",
   "keywords": [

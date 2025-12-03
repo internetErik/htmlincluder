@@ -1,16 +1,16 @@
-# gulp-htmlincluder
+# htmlincluder
 [![NPM version][npm-image]][npm-url]  [![Dependency Status][depstat-image]][depstat-url]
 
 > HTML file processor with include directives - works with [gulp](https://github.com/wearefractal/gulp) or standalone
 
-## 🎉 New in v2.3: Standalone Mode!
+## 🎉 New Standalone Version of HTMLIncluder!
 
 You can now use htmlincluder **without Gulp**! 
 
-- ✅ **CLI**: `npx htmlincluder build`
-- ✅ **Configuration file**: `htmlincluder.config.mjs`
-- ✅ **Programmatic API**: Import and use in your own scripts
-- ✅ **Watch mode**: Automatic rebuilds on file changes
+- **CLI**: `npx htmlincluder build`
+- **Configuration file**: `htmlincluder.config.mjs`
+- **Programmatic API**: Import and use in your own scripts
+- **Watch mode**: Automatic rebuilds on file changes
 
 [📖 Read the Standalone Usage Guide](./docs/STANDALONE.md)
 
@@ -42,7 +42,7 @@ Certain features use `eval`. I have flagged these features below, but please use
 ### Quick Start (Standalone)
 
 ```shell
-npm install --save-dev gulp-htmlincluder
+npm install --save-dev htmlincluder
 npx htmlincluder init
 npx htmlincluder build
 ```
