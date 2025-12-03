@@ -1,0 +1,29 @@
+<!--#if
+  jsonPath="test"
+  rawJson="{ test: true }"
+-->
+  this shows
+<!--#endif -->
+
+<!--#if
+  jsonPath="test"
+  rawJson="{ test: false }"
+-->
+  this doesn't show
+<!--#endif -->
+
+<!--#if
+  jsonPath="test"
+  rawJson="{ test: true }"
+-->
+  <!--#insert path="./components/-text-insert.html" -->
+<!--#endif -->
+
+<!--#insert rawJson="{ check : true }" path="./components/-if.html" -->
+
+<!--#if
+  jsonPath="test"
+  rawJson="(async (json) => { return Promise.resolve({ test : true })})(json)"
+-->
+  ASYNC! <!--#insert path="./components/-text-insert.html" -->
+<!--#endif -->

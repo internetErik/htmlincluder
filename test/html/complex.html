@@ -1,0 +1,33 @@
+<!--#wrap
+  path="./wrappers/_with-json.html"
+  rawJson="{
+    title: 'This is a title',
+  }"
+-->
+  <div>This is a more complicated page, using more advanced techniques</div>
+
+  <!--#insert
+    path="./components/-customized-component.html"
+    rawJson="{
+      message: 'This message is being passed down two levels, from the page',
+    }"
+  -->
+
+  <!--#each
+    jsonPath="arr"
+    rawJson="{
+      arr: [
+        { data: '1' },
+        { data: '2' },
+        { data: '3' },
+        { data: '4' },
+        { data: '5' },
+        { data: '6' },
+        { data: '7' },
+      ]
+    }"
+  -->
+    <div><!--#data jsonPath="data" --></div>
+  <!--#endeach -->
+
+<!--#endwrap -->

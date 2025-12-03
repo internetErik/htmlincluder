@@ -1,0 +1,79 @@
+{
+  "name": "htmlincluder",
+  "version": "0.1.0",
+  "description": "A utility for building files into each other.",
+  "keywords": [
+    "gulpplugin"
+  ],
+  "type": "commonjs",
+  "homepage": "https://github.com/internetErik/htmlincluder",
+  "bugs": "https://github.com/internetErik/htmlincluder/issues",
+  "author": {
+    "name": "Erik Christianson",
+    "url": "https://github.com/internetErik"
+  },
+  "main": "./index.js",
+  "module": "./htmlincluder.mjs",
+  "exports": {
+    ".": {
+      "require": "./index.js",
+      "import": "./htmlincluder.mjs"
+    },
+    "./core": {
+      "import": "./src/core.mjs"
+    },
+    "./config": {
+      "import": "./src/config-loader.mjs"
+    }
+  },
+  "bin": {
+    "htmlincluder": "./src/cli.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/internetErik/htmlincluder.git"
+  },
+  "scripts": {
+    "preinstall": "npx npm-force-resolutions",
+    "build": "webpack --mode=development"
+  },
+  "resolutions": {
+    "glob-parent": "^6.0.2"
+  },
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "commander": "^11.0.0",
+    "natives": "^1.1.6",
+    "plugin-error": "^1.0.1",
+    "through2": "^4.0.2"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env"
+      ]
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "babel-loader": "^8.2.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.24.1",
+    "coveralls": "*",
+    "event-stream": "*",
+    "gulp": "^4.0.2",
+    "istanbul": "*",
+    "mocha": "*",
+    "mocha-lcov-reporter": "*",
+    "should": "~2.1.0",
+    "webpack": "^5.58.1",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-cli": "^4.9.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}

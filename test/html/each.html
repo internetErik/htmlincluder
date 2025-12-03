@@ -1,0 +1,97 @@
+<div>
+Repeat something a number of times
+</div>
+
+<!--#each count="3" -->
+<div>hello world</div>
+<!--#endeach -->
+
+<div>
+Loop through some data and print it
+</div>
+
+<!--#each
+  jsonPath="arr"
+  rawJson="{
+    arr: [
+      { num: '1' },
+      { num: '2' },
+      { num: '3' },
+      { num: '4' },
+      { num: '5' },
+      { num: '6' },
+      { num: '7' },
+    ]
+  }"
+-->
+  <div><!--#data jsonPath="num" --></div>
+<!--#endeach -->
+
+<!--#if jsonPath="check" rawJson="{ check : true }" -->
+  <div>Using array with no jsonPath</div>
+  <!--#each rawJson="[1,'two',3,4,5,6]" -->
+    <div><!--#data jsonPath="this" --></div>
+  <!--#endeach -->
+<!--#endif -->
+
+<!--#each
+  jsonPath="arr"
+  rawJson="{
+    arr: [
+      { show: true,  data: 'some info 1' },
+      { show: false, data: 'some info 2' },
+      { show: true,  data: 'some info 3' },
+      { show: false, data: 'some info 4' },
+      { show: false, data: 'some info 5' },
+      { show: false, data: 'some info 6' },
+      { show: true,  data: 'some info 7' },
+    ]
+  }"
+-->
+  <!--#if jsonPath="show" -->
+  <div><!--#data jsonPath="data" --></div>
+  <!--#endif -->
+<!--#endeach -->
+
+<div>
+  Insert a list and pass data into it.
+</div>
+
+<!--#insert
+  path="./components/-list.html"
+  jsonPath="members"
+  rawJson="{
+    members: [
+      { name: 'member 1'},
+      { name: 'member 2'},
+      { name: 'member 3'},
+      { name: 'member 4'},
+      { name: 'member 5'},
+      { name: 'member 6'},
+    ],
+  }"
+-->
+
+<!--#each jsonPath="this" rawJson="[
+    { name: 'Tom', age: 33, bio: 'Bio for Tom' },
+    { name: 'Dick', age: 55, bio: 'Dick\'s bio' },
+    { name: 'Jane', age: 28, bio: 'Bio for Jane' },
+    { name: 'Harry', age: 27 },
+  ]" -->
+  <div>name: <!--#data jsonPath="name" --></div>
+  <div>age: <!--#data jsonPath="age" --></div>
+  <div>bio: <!--#data jsonPath="bio" default="nothing is known about them" --></div>
+<!--#endeach -->
+
+<!--#each jsonPath="this" rawJson="(async (j) =>
+    await Promise.resolve([
+    { name: 'aTom', age: 33, bio: 'Bio for Tom' },
+    { name: 'aDick', age: 55, bio: 'Dick\'s bio' },
+    { name: 'aJane', age: 28, bio: 'Bio for Jane' },
+    { name: 'aHarry', age: 27 },
+  ])
+  )(json)" -->
+  <div>async name: <!--#data jsonPath="name" --></div>
+  <div>async age: <!--#data jsonPath="age" --></div>
+  <div>async bio: <!--#data jsonPath="bio" default="nothing is known about them" --></div>
+<!--#endeach -->
